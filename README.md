@@ -1,65 +1,119 @@
-# 📆 Expiry Tracker
+# 📆 Expiry Tracker - Document Expiry Reminder System
 
-A simple Spring Boot project to **track expiry dates** of important documents like PAN, Aadhaar, passport, license, insurance, etc., and send **email reminders** before they expire.
-
----
-
-## 🔧 Features
-
-- ⏰ Sends automatic **email reminders** before expiry
-- 📅 Uses **Spring Scheduler** to check dates daily
-- 📤 Email setup using **JavaMailSender** (Gmail SMTP)
-- 🛡️ Secure and simple backend
-- 💡 Plans to add document upload and smarter alerts
+A Spring Boot application that tracks the expiry dates of important documents and sends timely email reminders to users. It helps individuals avoid missing important renewal deadlines like PAN, Aadhaar, license, insurance, etc.
 
 ---
 
-## 📌 Technologies Used
+## 📌 Table of Contents
 
-- Java 17  
-- Spring Boot  
-- JavaMailSender  
-- Spring Scheduler  
-- Gmail SMTP  
-- Eclipse IDE
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [How It Works](#how-it-works)
+- [Getting Started](#getting-started)
+- [Why This Project](#why-this-project)
+- [Future Enhancements](#future-enhancements)
+- [Advantages Over DigiLocker and Calendars](#advantages-over-digilocker-and-calendars)
+- [Author](#author)
 
 ---
 
-## 📁 How to Run
+## ✅ Features
 
-1. Clone the project
-2. Set your email and app password in `MailConfig.java`
-3. Run with:
+- 🔔 Email reminders before document expiry
+- 🕒 Daily scheduled checks using Spring Scheduler
+- ✉️ Gmail SMTP integration for sending alerts
+- 🗃️ PostgreSQL for storing users, documents, and reminders
+- 📅 Automatically tracks all expiry dates
+
+---
+
+## 🛠️ Tech Stack
+
+- **Backend**: Java 17, Spring Boot
+- **Database**: PostgreSQL (stores user info, documents, and reminders)
+- **Email Service**: JavaMailSender (Gmail SMTP)
+- **Scheduling**: Spring Scheduler (`@EnableScheduling`)
+- **IDE**: Eclipse IDE
+- **Build Tool**: Maven
+
+---
+
+## ⚙️ How It Works
+
+1. User adds document details and expiry date.
+2. Data is stored securely in a PostgreSQL database.
+3. Spring Scheduler runs daily to check for upcoming expiries.
+4. Email is sent to the user as a reminder.
+
+---
+
+## 🚀 Getting Started
+
+1. **Clone the repository**
    ```bash
-   mvn spring-boot:run
+   git clone <your-repo-url>
+   cd expiry-tracker
 ````
 
+2. **Configure Gmail in `MailConfig.java`**
+
+   ```java
+   mailSender.setUsername("your-email@gmail.com");
+   mailSender.setPassword("your-app-password");
+   ```
+
+3. **Set up PostgreSQL**
+
+   * Create a database (e.g., `expiry_tracker`)
+   * Update `application.properties`:
+
+     ```
+     spring.datasource.url=jdbc:postgresql://localhost:5432/expiry_tracker
+     spring.datasource.username=your_db_user
+     spring.datasource.password=your_db_password
+     ```
+
+4. **Run the application**
+
+   ```bash
+   mvn spring-boot:run
+   ```
+
 ---
 
-## ✅ Why This Project?
+## 💬 Why This Project?
 
-* Easier than using calendars
-* Better notifications than DigiLocker
-* Custom alerts and future enhancements possible
-
----
-
-## 🚀 Future Improvements
-
-* Upload and store documents
-* Smart notifications
-* Better than DigiLocker for expiry management
+* Helps users remember renewal dates.
+* Calendar apps require manual entry and don’t auto-alert.
+* DigiLocker stores documents but doesn’t notify users before expiry.
+* This project fills that gap with smart reminders and tracking.
 
 ---
 
-## 👨‍💻 Made By
+## 🔮 Future Enhancements
+
+* 📎 Document upload feature
+* 📊 User dashboard to view all expiry data
+* 🔐 Admin/user login roles
+* 📱 Mobile/Web app integration
+* ⏰ Custom notification intervals
+
+---
+
+## 🆚 Advantages Over DigiLocker and Calendars
+
+| Feature                   | Expiry Tracker ✅ | DigiLocker ❌ | Calendar ❌ |
+| ------------------------- | ---------------- | ------------ | ---------- |
+| Expiry Reminders          | ✅                | ❌            | ✅ (manual) |
+| Auto Email Alerts         | ✅                | ❌            | ❌          |
+| PostgreSQL Data Storage   | ✅                | ✅            | ❌          |
+| Smart Notification System | ✅ (Planned)      | ❌            | ❌          |
+| Document Upload           | ✅ (Planned)      | ✅            | ❌          |
+
+---
+
+## 👨‍💻 Author
 
 **Soham Kalgutkar**
-📧 [sohamkalg@gmail.com](mailto:sohamkalg@gmail.com)
+📧 Email: [sohamkalg@gmail.com](mailto:sohamkalg@gmail.com)
 
-```
-
----
-
-Let me know if you want a version in `.md` format or as a PowerPoint slide summary too!
-```
